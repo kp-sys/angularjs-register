@@ -14,7 +14,6 @@ module.exports = {
         filename: '[name].js',
 
         library: 'register',
-        libraryExport: 'register',
         libraryTarget: 'umd'
     },
 
@@ -43,7 +42,7 @@ module.exports = {
         new CleanWebpackPlugin(
 				['dist/*.*'],
 				{
-					root: '.',
+					root: path.resolve('.'),
 					verbose: true
 				}
 			)

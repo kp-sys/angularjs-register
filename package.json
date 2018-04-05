@@ -33,6 +33,6 @@
     },
     "scripts": {
         "build": "webpack --progress",
-        "test": "karma start karma.conf.js"
+        "test": "webpack && karma start karma.conf.js"
     }
 }

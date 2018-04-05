@@ -1,5 +1,5 @@
 import angular from 'angular';
-import register from '../src/register';
+import register from '../dist/register';
 
 describe('Register.js tests', () => {
 
