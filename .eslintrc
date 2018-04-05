@@ -1,0 +1,52 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-console": "error",
+    "eqeqeq": "error",
+    "no-alert": "error",
+    "no-caller": "error",
+    "no-continue": "error",
+    "guard-for-in": "error",
+    "no-new-wrappers": "error",
+    "default-case": "error",
+    "no-undef-init": "error",
+    "no-undefined": "error",
+    "no-with": "error",
+    "no-array-constructor": "error",
+    "no-new-object": "error",
+    "no-bitwise": "error",
+    "no-prototype-builtins": "error",
+    "no-eval": "error",
+    "no-lonely-if": "error",
+    "no-sequences": "error",
+    "curly": "error",
+    "no-debugger": "error",
+    "no-mixed-operators": "error",
+    "no-trailing-spaces": "warn",
+    "no-multi-str": "error",
+    "no-inline-comments": "error",
+    "object-shorthand": "error",
+    "quotes": ["error", "single"],
+    "prefer-template": "error",
+    "radix": "error",
+    "no-invalid-this": "error",
+    "comma-dangle": ["error", "never"],
+    "prefer-const": "error",
+    "no-extra-parens": ["error", "all", {"nestedBinaryExpressions": false}],
+    "no-global-assign": "error",
+    "no-implicit-globals": "error",
+    "no-var": "error",
+    "no-shadow-restricted-names": "error",
+    "no-shadow": "error"
+  }
+}
