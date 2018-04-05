@@ -4,6 +4,7 @@
     "license": "MIT",
     "author": "Tomas Dostal",
     "repository": "https://github.com/DostalTomas/angularjs-register.git",
+    "main": "dist/register.js",
     "peerDependencies": {
         "angular": "^1.6.x"
     },
