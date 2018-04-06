@@ -4,7 +4,7 @@
     "license": "MIT",
     "author": "Tomas Dostal",
     "repository": "https://github.com/DostalTomas/angularjs-register.git",
-    "main": "dist/register.js",
+    "main": "src/register.js",
     "peerDependencies": {
         "angular": "^1.6.x"
     },
@@ -33,6 +33,6 @@
     },
     "scripts": {
         "build": "webpack --progress",
-        "test": "webpack && karma start karma.conf.js"
+        "test": "karma start karma.conf.js"
     }
 }
