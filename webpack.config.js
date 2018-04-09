@@ -29,7 +29,27 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: 'babel-loader'
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        'plugins': [
+                            '@babel/plugin-proposal-class-properties'
+                        ],
+                        'presets': [
+                            [
+                                'env',
+                                {
+                                    'targets': {
+                                        'browsers': [
+                                            'last 2 versions',
+                                            'IE 11'
+                                        ]
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                }]
             }
         ]
     },
@@ -40,11 +60,11 @@ module.exports = {
 
     plugins: [
         new CleanWebpackPlugin(
-				['dist/*.*'],
-				{
-					root: path.resolve('.'),
-					verbose: true
-				}
-			)
+            ['dist/*.*'],
+            {
+                root: path.resolve('.'),
+                verbose: true
+            }
+        )
     ]
 };
