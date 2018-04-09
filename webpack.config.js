@@ -13,8 +13,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
 
-        library: 'register',
-        libraryTarget: 'umd'
+        library: 'angularjs-register',
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
 
     module: {
