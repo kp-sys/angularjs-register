@@ -1,6 +1,6 @@
 import {IModule} from 'angular';
 
-export = register;
+export {register as default};
 
 declare function register(moduleName: string, dependencies?: string[]): Register;
 
