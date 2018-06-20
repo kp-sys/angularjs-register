@@ -5,10 +5,11 @@ module.exports = {
     mode: 'production',
 
     entry: {
-        register: './src/register.ts'
+        register: './src/register.js'
     },
 
     output: {
+        // eslint-disable-next-line no-undef
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
 
@@ -21,23 +22,37 @@ module.exports = {
         rules: [
             {
                 enforce: 'pre',
-                test: /\.ts$/,
+                test: /\.js$/,
                 exclude: [/node_modules/],
-                loader: 'tslint-loader'
+                loader: 'eslint-loader'
             },
 
             {
-                test: /\.ts$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: [{
-                    loader: 'ts-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        'plugins': [
+                            '@babel/plugin-proposal-class-properties'
+                        ],
+                        'presets': [
+                            [
+                                'env',
+                                {
+                                    'targets': {
+                                        'browsers': [
+                                            'last 2 versions',
+                                            'IE 11'
+                                        ]
+                                    }
+                                }
+                            ]
+                        ]
+                    }
                 }]
             }
         ]
-    },
-
-    resolve: {
-        extensions: ['.js', '.ts']
     },
 
     externals: {

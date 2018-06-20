@@ -4,7 +4,7 @@ module.exports = (config) => {
         files: [
             './node_modules/angular/angular.js',
             './node_modules/angular-mocks/angular-mocks.js',
-            'src/register.ts',
+            './src/register.js',
             './test/register.spec.js'
         ],
 
@@ -70,32 +70,12 @@ module.exports = (config) => {
                                 ]
                             }
                         }]
-                    },
-
-                    {
-                        enforce: 'pre',
-                        test: /\.ts$/,
-                        exclude: [/node_modules/],
-                        loader: 'tslint-loader'
-                    },
-
-                    {
-                        test: /\.ts$/,
-                        exclude: /node_modules/,
-                        use: [{
-                            loader: 'ts-loader'
-                        }]
                     }
-
                 ]
             },
 
             externals: {
                 angular: 'angular'
-            },
-
-            resolve: {
-                extensions: ['.js', '.ts']
             },
 
             devtool: 'inline-source-map'
