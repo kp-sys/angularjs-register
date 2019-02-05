@@ -14,8 +14,7 @@ module.exports = {
         filename: '[name].js',
 
         library: 'angularjs-register',
-        libraryTarget: 'umd',
-        umdNamedDefine: true
+        libraryTarget: 'umd'
     },
 
     module: {
