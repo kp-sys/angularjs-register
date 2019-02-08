@@ -308,6 +308,7 @@ function _createFactoryArray(constructorFn) {
 		const instance = new constructorFn(...args);
 		for (const key in instance) {
 			//noinspection JSUnfilteredForInLoop
+			// eslint-disable-next-line no-self-assign
 			instance[key] = instance[key];
 		}
 		return instance;
