@@ -23,3 +23,5 @@ deploy:
   email: "tomas.dostal@kpsys.cz"
   api_key: $NPM_TOKEN
   skip_cleanup: true
+  on:
+    tags: true

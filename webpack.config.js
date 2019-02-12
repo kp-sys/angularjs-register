@@ -1,11 +1,13 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const pkg = require('./package.json');
+const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
 module.exports = {
     mode: 'production',
 
     entry: {
-        register: './src/register.js'
+        'register.min': './src/register.js'
     },
 
     output: {
@@ -13,7 +15,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
 
-        library: 'angularjs-register',
+        library: pkg.name,
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
@@ -33,21 +35,8 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        'plugins': [
-                            '@babel/plugin-proposal-class-properties'
-                        ],
-                        'presets': [
-                            [
-                                'env',
-                                {
-                                    'targets': {
-                                        'browsers': [
-                                            'last 2 versions',
-                                            'IE 11'
-                                        ]
-                                    }
-                                }
-                            ]
+                        presets: [
+                            '@babel/preset-env'
                         ]
                     }
                 }]
@@ -59,6 +48,8 @@ module.exports = {
         angular: 'angular'
     },
 
+    devtool: 'source-map',
+
     plugins: [
         new CleanWebpackPlugin(
             ['dist/*.*'],
@@ -66,6 +57,7 @@ module.exports = {
                 root: path.resolve('.'),
                 verbose: true
             }
-        )
+        ),
+        new UnminifiedWebpackPlugin()
     ]
 };

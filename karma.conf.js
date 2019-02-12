@@ -4,13 +4,12 @@ module.exports = (config) => {
         files: [
             './node_modules/angular/angular.js',
             './node_modules/angular-mocks/angular-mocks.js',
-            './src/register.js',
-            './test/register.spec.js'
+            './dist/register.min.js',
+            'src/**.spec.js'
         ],
 
         preprocessors: {
-            'src/register.js': ['webpack', 'sourcemap'],
-            'test/register.spec.js': ['webpack']
+            'src/**.spec.js': ['webpack']
         },
 
         frameworks: ['jasmine'],
@@ -52,21 +51,11 @@ module.exports = (config) => {
                         use: [{
                             loader: 'babel-loader',
                             options: {
-                                'plugins': [
+                                plugins: [
                                     '@babel/plugin-proposal-class-properties'
                                 ],
-                                'presets': [
-                                    [
-                                        'env',
-                                        {
-                                            'targets': {
-                                                'browsers': [
-                                                    'last 2 versions',
-                                                    'IE 11'
-                                                ]
-                                            }
-                                        }
-                                    ]
+                                presets: [
+                                    '@babel/preset-env'
                                 ]
                             }
                         }]
