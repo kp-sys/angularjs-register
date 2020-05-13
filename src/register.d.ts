@@ -1,38 +1,58 @@
-import {IModule} from 'angular';
+import {IChangesObject, IComponentOptions, IModule} from 'angular';
 
 export {register as default};
 
-declare function register(moduleName: string, dependencies?: string[]): Register;
+export function register(moduleName: string, dependencies?: string[]): Register;
 
-declare class Register {
+export interface Register {
 
-    private constructor(moduleName: string, dependencies?: string[]);
+    directive(directiveName: string, directiveClass): this;
 
-    public directive(directiveName: string, directiveClass): this;
+    controller(controllerName: string, controllerClass): this;
 
-    public controller(controllerName: string, controllerClass): this;
+    service(serviceName: string, serviceClass): this;
 
-    public service(serviceName: string, serviceClass): this;
+    provider(providerName: string, providerClass): this;
 
-    public provider(providerName: string, providerClass): this;
+    factory(factoryName: string, factoryFunction: (...args: any[]) => any): this;
 
-    public factory(factoryName: string, factoryFunction: (...args: any[]) => any): this;
+    filter(filterName: string, filterFunction: (...args: any[]) => any): this;
 
-    public filter(filterName: string, filterFunction: (...args: any[]) => any): this;
+    component(componentName: string, componentClass): this;
 
-    public component(componentName: string, componentClass): this;
+    constant(name: string, obj: any): this;
 
-    public constant(name: string, obj: any): this;
+    value(name: string, obj: any): this;
 
-    public value(name: string, obj: any): this;
+    decorator(name: string, decoratorFunction: (...args: any[]) => any): this;
 
-    public decorator(name: string, decoratorFunction: (...args: any[]) => any): this;
+    config(configFunction: (...args: any[]) => any): this;
 
-    public config(configFunction: (...args: any[]) => any): this;
+    run(initializationFunction: (...args: any[]) => any): this;
 
-    public run(initializationFunction: (...args: any[]) => any): this;
+    module(): IModule;
 
-    public module(): IModule;
+    name(): string;
+}
 
-    public name(): string;
+export type ComponentBindings = '@' | '<' | '&' | '=' | '@?' | '<?' | '&?' | '=?';
+
+export interface ComponentController<T> {
+    prototype: [T] extends [never] ? any : T;
+}
+
+export interface Component<BINDINGS> extends Omit<IComponentOptions, 'bindings' | 'controller'> {
+    bindings?: {
+        [prop in keyof BINDINGS]: ComponentBindings;
+    };
+
+    controller?: ComponentController<BINDINGS>;
+}
+
+export type OnChangesObject<BINDINGS> = {
+    [property in keyof BINDINGS]: IChangesObject<BINDINGS[property]>;
+};
+
+export interface OnChanges<BINDINGS> {
+    $onChanges(onChangesObj: OnChangesObject<BINDINGS>): void;
 }
