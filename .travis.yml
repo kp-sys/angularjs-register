@@ -3,6 +3,9 @@ sudo: false
 
 os: linux
 
+addons:
+  chrome: stable
+
 env:
   global:
     - NODE_VERSION=10
@@ -16,7 +19,7 @@ install:
 
 script:
   - npm run build
-  - npm test
+  - CHROMIUM_BIN="/usr/bin/google-chrome" npm test
 
 deploy:
   provider: npm
@@ -24,4 +27,4 @@ deploy:
   api_key: $NPM_TOKEN
   skip_cleanup: true
   on:
-    tags: true
+    branch: master
