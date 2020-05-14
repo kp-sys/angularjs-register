@@ -48,5 +48,6 @@
     "no-var": "error",
     "no-shadow-restricted-names": "error",
     "no-shadow": "error"
-  }
+  },
+  "ignorePatterns": ["**/*.d.ts"]
 }

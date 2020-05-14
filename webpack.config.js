@@ -1,5 +1,5 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pkg = require('./package.json');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
@@ -51,13 +51,10 @@ module.exports = {
     devtool: 'source-map',
 
     plugins: [
-        new CleanWebpackPlugin(
-            ['dist/*.*'],
-            {
-                root: path.resolve('.'),
-                verbose: true
-            }
-        ),
+        new CleanWebpackPlugin({
+            verbose: true,
+            cleanStaleWebpackAssets: false
+        }),
         new UnminifiedWebpackPlugin()
     ]
 };
