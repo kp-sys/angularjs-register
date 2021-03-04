@@ -45,7 +45,7 @@ declare module '@kpsys/angularjs-register' {
 
     export interface Component<BINDINGS> extends Omit<IComponentOptions, 'bindings' | 'controller'> {
         bindings?: {
-            [prop in keyof BINDINGS]: ComponentBindings;
+            [prop in keyof Required<BINDINGS>]: ComponentBindings;
         };
 
         controller?: ComponentController<BINDINGS>;
